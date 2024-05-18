@@ -9,43 +9,45 @@
     <script src="./libarries/FetchObject.min.js"></script>
     <style>
         @font-face {
-            font-family: zcoolkuaile;
+            font-family: zcool-kuaile;
             src: url("https://jsd.cdn.zzko.cn/gh/azdyqwo/my-website@main/static/zcoolkl.ttf");
         }
-
-        @font-face {
-            font-family: zcoolkuaile;
-            src: url("https://jsd.cdn.zzko.cn/gh/azdyqwo/my-website@main/static/zcoolkl.ttf");
+        body{
+            font-family: "zcool-kuaile";
         }
-    </style>
+        input{
+            font-family: "zcool-kuaile";
+        }
+	</style>
+    <title>《我的世界》 3D 图腾生成</title>
 </head>
 
 <body>
     <div class="body">
         <div id="drop-file-here" style="display: none;">
             <a
-                style="font-family: minecraft-ten; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
+                style="font-family: zcool-kuaile; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
         </div>
-        <header class="websiteHeader">《我的世界》 3D 图腾创建</header>
+        <header class="websiteHeader" style="font-family: zcool-kuaile;" ; font-size: 19px>《我的世界》 3D 图腾创建</header>
         <div class="scrollAble">
             <div class="verticle-stack dropdown">
                 <button type="button" class="dropdown-toggle">
-                    <span>网站信息</span>
+                    <span><a style="font-family: zcool-kuaile;">网站信息</a></span>
                     <div class="dropdown-arrow"></div>
                 </button>
 
                 <div class="dropdown-content">
                     <div style="position: relative; left: 5px;">
-                        <a style="font-family: minecraft-ten; font-size: 20px;"><b>信息</b></a><br>
-                        <a style="font-family: minecraft;">开发者: Asaki Yuki</a><br>
-                        <a style="font-family: minecraft;">译者: <a href=https://azqaq.top>azQAQ</a></a><br>
-                        <a style="font-family: minecraft;">源代码: <a
+                        <a style="font-family: zcool-kuaile; font-size: 20px;"><b>信息</b></a><br>
+                        <a style="font-family: zcool-kuaile;">开发者: Asaki Yuki</a><br>
+                        <a style="font-family: zcool-kuaile;">译者: <a href=https://azqaq.top style="font-family: zcool-kuaile;">azQAQ</a> </a><br>
+                        <a style="font-family: zcool-kuaile;">源代码: <a
                                 href="https://github.com/asakiyuki/3d-totem-generator"
-                                style="color: #0FF;">Github</a> <br>
-                            <a style="font-family: minecraft-ten; font-size: 20px"><b>这是什么网站？</b></a><br>
-                            <a style="font-family: minecraft;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
-                            <a style="font-family: minecraft-ten; font-size: 20px"><b>怎么使用该工具？</b></a><br>
-                            <a style="font-family: minecraft;">非常易于使用，只需要上传皮肤并下载它！</a><br>
+                                style="font-family: zcool-kuaile;">Github</a></a> <br>
+                            <a style="font-family: zcool-kuaile; font-size: 20px"><b>这是什么网站？</b></a><br>
+                            <a style="font-family: zcool-kuaile;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
+                            <a style="font-family: zcool-kuaile; font-size: 20px"><b>怎么使用该工具？</b></a><br>
+                            <a style="font-family: zcool-kuaile;">非常易于使用，只需要上传皮肤并下载它！</a><br>
                     </div>
                 </div>
             </div>
@@ -53,13 +55,13 @@
             <div class="verticle-stack skinList importElement">
                 <input id="importImage" type="file" title="">
                 <div class="importImageText">
-                    <a>单击此处选择文件或拖放到本网站上导入皮肤</a>
+                    <a style="font-family: zcool-kuaile;">单击此处选择文件或拖放到本网站上导入皮肤</a>
                 </div>
             </div>
 
             <div id="skinDropdown" class="verticle-stack skinList">
                 <div class="skin-items" style="text-align: center;">
-                    <a id="skinCounter">没有皮肤被上传！</a>
+                    <a id="skinCounter" style="font-family: zcool-kuaile;">没有皮肤被上传！</a>
                 </div>
                 <div id="skin-items-container" style="position: static; width: 100%; overflow: hidden;">
                 </div>
@@ -67,9 +69,9 @@
             </div>
 
             <div class="verticle-stack skinList downloadPackage">
-                <button id="platform"><span id="flatformText">基岩版</span></button>
-                <input type="text" placeholder=" 包名..." id="packName">
-                <button id="download"><span>下载</span></button>
+                <button id="platform"><span id="flatformText"><a style="font-family: zcool-kuaile;">基岩版</a></span></button>
+                <input type="text" placeholder=" 包名..." id="packName"></a>
+                <button id="download"><span><a style="font-family: zcool-kuaile;">下载</a></span></button>
             </div>
         </div>
     </div>
@@ -77,7 +79,7 @@
     <div id="skinEditorDialog">
         <div class="editorContent">
             <div class="editorLabel">
-                <span id="title">皮肤编辑器: ${SkinName}</span>
+                <span id="title"><a style="font-family: zcool-kuaile;">皮肤编辑器: ${SkinName}</a></span>
             </div>
 
             <div class="imageEditorScreen">
@@ -92,7 +94,7 @@
             </div>
 
             <div class="buttonStack">
-                <button id="close">保存并关闭</button>
+                <button id="close"><a style="font-family: zcool-kuaile;">保存并关闭</a></button>
             </div>
         </div>
     </div>
