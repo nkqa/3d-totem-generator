@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./libarries/jszip.min.js"></script>
-    <script src="https://asakiyuki.vercel.app/lib/HTMNode.min.js"></script>
-    <script src="https://asakiyuki.vercel.app/lib/JSZipByObject.min.js"></script>
-    <script src="https://asakiyuki.vercel.app/lib/FetchObject.min.js"></script>
+    <script src="./libarries/HTMNode.min.js"></script>
+    <script src="./libarries/JSZipByObject.min.js"></script>
+    <script src="./libarries/FetchObject.min.js"></script>
     <style>
         @font-face {
             font-family: minecraft;
@@ -24,30 +24,28 @@
     <div class="body">
         <div id="drop-file-here" style="display: none;">
             <a
-                style="font-family: minecraft-ten; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">Upload
-                your skin</a>
+                style="font-family: minecraft-ten; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
         </div>
-        <header class="websiteHeader">3D Totem Generator</header>
+        <header class="websiteHeader">3D 图腾创建</header>
         <div class="scrollAble">
             <div class="verticle-stack dropdown">
                 <button type="button" class="dropdown-toggle">
-                    <span>Website Info</span>
+                    <span>网站信息</span>
                     <div class="dropdown-arrow"></div>
                 </button>
 
                 <div class="dropdown-content">
                     <div style="position: relative; left: 5px;">
-                        <a style="font-family: minecraft-ten; font-size: 20px;">Info</a><br>
-                        <a style="font-family: minecraft;">Developer: Asaki Yuki</a><br>
-                        <a style="font-family: minecraft;">Source code: <a
+                        <a style="font-family: minecraft-ten; font-size: 20px;">信息</a><br>
+                        <a style="font-family: minecraft;">开发者: Asaki Yuki</a>
+                        <a style="font-family: minecraft;">译者: <a href=https://azqaq.top>azQAQ</a></a><br>
+                        <a style="font-family: minecraft;">源代码: <a
                                 href="https://github.com/asakiyuki/3d-totem-generator"
-                                style="color: #0FF;">Github</a><br>
-                            <a style="font-family: minecraft-ten; font-size: 20px">What is this website?</a><br>
-                            <a style="font-family: minecraft;">This website using for create your own totem resource
-                                pack with player skin or picture in Minecraft</a><br>
+                                style="color: #0FF;">Github</a> <br>
+                            <a style="font-family: minecraft-ten; font-size: 20px">这是什么网站?</a><br>
+                            <a style="font-family: minecraft;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
                             <a style="font-family: minecraft-ten; font-size: 20px">How to use this tool</a><br>
-                            <a style="font-family: minecraft;">Very easy to use, just drag and drop on this website or
-                                select your most-liked skins and download it!</a><br>
+                            <a style="font-family: minecraft;">非常易于使用，只需要上传皮肤并下载它！</a><br>
                     </div>
                 </div>
             </div>
@@ -55,13 +53,13 @@
             <div class="verticle-stack skinList importElement">
                 <input id="importImage" type="file" title="">
                 <div class="importImageText">
-                    <a>Click here to select a file or Drag and Drop on this website to Import skin</a>
+                    <a>单击此处选择文件或拖放到本网站上导入皮肤</a>
                 </div>
             </div>
 
             <div id="skinDropdown" class="verticle-stack skinList">
                 <div class="skin-items" style="text-align: center;">
-                    <a id="skinCounter">0 skins imported!</a>
+                    <a id="skinCounter">没有皮肤被上传！</a>
                 </div>
                 <div id="skin-items-container" style="position: static; width: 100%; overflow: hidden;">
                 </div>
@@ -69,9 +67,9 @@
             </div>
 
             <div class="verticle-stack skinList downloadPackage">
-                <button id="platform"><span id="flatformText">Bedrock</span></button>
+                <button id="platform"><span id="flatformText">基岩版</span></button>
                 <input type="text" placeholder="Pack name..." id="packName">
-                <button id="download"><span>Download</span></button>
+                <button id="download"><span>下载</span></button>
             </div>
         </div>
     </div>
@@ -79,7 +77,7 @@
     <div id="skinEditorDialog">
         <div class="editorContent">
             <div class="editorLabel">
-                <span id="title">Skin Editor: ${SkinName}</span>
+                <span id="title">皮肤编辑器: ${SkinName}</span>
             </div>
 
             <div class="imageEditorScreen">
@@ -94,7 +92,7 @@
             </div>
 
             <div class="buttonStack">
-                <button id="close">Save and Close</button>
+                <button id="close">保存并关闭</button>
             </div>
         </div>
     </div>
