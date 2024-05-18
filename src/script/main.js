@@ -7,7 +7,7 @@
  */
 
 {
-    PageDisplay.setTitle('3D Totem Generator').setIcon('./src/texture/icon.webp').setGraph({ facebook: { title: '3D Totem Generator', type: 'website', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://asakiyuki.github.io/3d-totem-generator/' }, twitter: { card: 'summary_large_image', title: '3D Totem Generator', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://asakiyuki.github.io/3d-totem-generator/' } }).importCSS('./src/style/main.css')
+    PageDisplay.setTitle('《我的世界》 3D 图腾生成').setIcon('./src/texture/icon.webp').setGraph({ facebook: { title: '《我的世界》3D 图腾生成', type: 'website', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' }, twitter: { card: 'summary_large_image', title: '《我的世界》3D 图腾生成', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' } }).importCSS('./src/style/main.css')
 }
 
 const skinOptions = {
@@ -241,7 +241,7 @@ Array.from(GetElement.class("dropdown-toggle")).forEach(node => {
 
 const updateSkinCounter = () => {
     const skinAmount = Object.keys(skinData).length;
-    GetElement.id('skinCounter').innerText = (skinAmount === 1) ? `1 skin imported!` : `${skinAmount} skins imported!`
+    GetElement.id('skinCounter').innerText = (skinAmount === 1) ? `1张皮肤展开图已被上传！` : `${skinAmount}张皮肤展开图已被上传！`
 }
 
 const addSkin = (data, texture, name, isSmallHand, isSize64, skinID = Array.from({length: 15}, () => Math.floor(Math.random() * 15).toString(15)).join('')) => {
@@ -257,8 +257,8 @@ const addSkin = (data, texture, name, isSmallHand, isSize64, skinID = Array.from
         <img src="./src/texture/pen.png">
     </button>
     <div class="skin-option-section">
-        <button id="big_hand" class="skinTypeButton skinTypeButtonActive">BIG</button>
-        <button id="small_hand" class="skinTypeButton">SMALL</button>
+        <button id="big_hand" class="skinTypeButton skinTypeButtonActive">粗手臂</button>
+        <button id="small_hand" class="skinTypeButton">细手臂</button>
         <button id="remove" class="removeTotem squareButton">
             <img class="empty" src="./src/texture/is_empty.ico">
             <img class="bocchi" src="./src/texture/is_has_trash.ico">
