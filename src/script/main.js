@@ -373,7 +373,7 @@ const onSkinImported = (data, name) => {
                 new CreateNode(GetElement.id('skin-items-container')).removeChild();
                 const manifest = await zip.file('manifest.json').async('string').then(v => v = JSON.parse(v));
                 if (!(manifest.header.version[0] >= 2)) {
-                    alert(`You can only import resource packs of version 2.0.0!`);
+                    alert(`您只可以上传2.0.0版本的资源包`);
                     return;
                 } 
                 skinOptions.packname = manifest.header.name; GetElement.id('packName').value = skinOptions.packname;
@@ -407,7 +407,7 @@ ImportFile.setup(GetElement.id('importImage'), onSkinImported, undefined, false,
 
 new CreateNode(GetElement.id('download')).setEvent({
     click: () => {
-        if (Object.keys(skinData).length === 0) alert('Please import at least 1 skin to download');
+        if (Object.keys(skinData).length === 0) alert('请先上传一张皮肤展开图再进行下载');
         else {
             const uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
             multiFetch({
