@@ -1,7 +1,7 @@
 {
     "format_version": 2,
     "header": {
-        "description": "The Custom Totem Skin Pack made by Asaki Yuki\nVersion: 2.0.0",
+        "description": "3D 自定义图腾创造由 Asaki Yuki\n版本: 2.0.0",
         "name": "",
         "uuid": "",
         "version": [
@@ -32,6 +32,6 @@
             "Asaki Zuki"
         ],
         "license": "MIT",
-        "url": "https://asakiyuki.github.io/Custom-Totem-Skin/"
+        "url": "https://3dtotem.azqaq.top"
     }
 }
