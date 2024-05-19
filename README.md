@@ -14,6 +14,6 @@ _使用玩家皮肤自定义图腾皮肤资源包的最简单方法！
     + 图腾皮肤可以在子包选项中更改
   + 将 zip/mcpack 文件上传到网站，为您的资源包添加更多图腾（仅适用于本网站使用的自定义图腾包 2.0.0 或更高版本）
   
-- ［_让我们定制你自己的图腾资源包 XD_](https://3dtotem.azqaq.top)
+- [_让我们定制你自己的图腾资源包 XD_](https://3dtotem.azqaq.top)
 
 ![image](https://github.com/asakiyuki/3d-totem-generator/assets/108646953/700f1f64-7695-4241-986c-d636c3b7d662)
