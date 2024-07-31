@@ -4,7 +4,7 @@ _使用玩家皮肤自定义图腾皮肤资源包的最简单方法！
 也可以上传到 MCPEDL 等其它与《我的世界》相关的资源网站！_
 
 + 开发者: [Asaki Yuki](https://www.youtube.com/@asakizuki)
-+ 译者: [azQAQ](https://azqaq.cat) （[YouTube](https://YouTube.com/@azqaq)）
++ 译者: [Meowco](https://azqaq.cat) （[YouTube](https://YouTube.com/@azqaq)）
 
 - 功能:
   + 艾利克斯/史蒂夫皮肤选项
