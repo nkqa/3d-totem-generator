@@ -7,7 +7,7 @@
  */
 
 {
-    PageDisplay.setTitle('《我的世界》 3D 图腾生成').setIcon('./src/texture/icon.webp').setGraph({ facebook: { title: '《我的世界》3D 图腾生成', type: 'website', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' }, twitter: { card: 'summary_large_image', title: '《我的世界》3D 图腾生成', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' } }).importCSS('./src/style/main.css')
+    PageDisplay.setTitle('《我的世界》 3D 图腾生成').setIcon('/favicon.ico').setGraph({ facebook: { title: '《我的世界》3D 图腾生成', type: 'website', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' }, twitter: { card: 'summary_large_image', title: '《我的世界》3D 图腾生成', description: 'Creating your own totem resource pack with player skin or picture in Minecraft', image: 'https://i.imgur.com/oGv0nbN.jpeg', url: 'https://3dtotem.azqaq.top' } }).importCSS('./src/style/main.css')
 }
 
 const skinOptions = {
