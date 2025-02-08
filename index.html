@@ -7,32 +7,12 @@
     <script src="./libarries/HTMNode.min.js"></script>
     <script src="./libarries/JSZipByObject.min.js"></script>
     <script src="./libarries/FetchObject.min.js"></script>
-   <style>
-        @font-face {
-            font-family: zcool-kuaile;
-            src: url("https://jsd.cdn.zzko.cn/gh/azdyqwo/my-website@main/static/zcoolkl.ttf");
-        }
-        body{
-            font-family: "zcool-kuaile";
-        }
-        input{
-            font-family: "zcool-kuaile";
-        }
-	</style>
-
-<!-- font -->
-<style type='text/css' media='screen'>
-	body{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h1{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h2{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h3{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h4{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h5{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	h6{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	blockquote{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	p{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-	li{ font-family:"ZCOOL KuaiLe", arial, sans-serif;}
-</style>
+    <script src="./libarries/share.js"></script>
+    <!-- font -->
+    <link rel="stylesheet" href="/font.css" type="text/css" media="all">
+    <title>《我的世界》 3D 图腾生成</title>
+	<meta name="keywords" content="mcneko,3d图腾,我的世界,Minecraft,3D材质,MC,MC图腾,我的世界图腾,我的世界图腾材质包,自定义图腾,自定义不死图腾,不死图腾贴图,3D不死图腾,自定义3D图腾,3d totem,一键图腾,图腾材质包,1.20图腾材质,图腾材质包下载" />
+<meta name="description" content="这里是3d图腾生成工具网站，您可以在此处将您的皮肤上传至网站，支持多个皮肤同时上传！" />
 
  <!--instant.page-->
  <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
@@ -46,67 +26,68 @@
   gtag('config', 'G-4XF5XT1WGB');
 </script>
 <!-- ... -->
-	<script type="text/javascript">
+<script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "pyh6v9e731");
+    })(window, document, "clarity", "script", "o11hourj5x");
 </script>
-    <title>《我的世界》 3D 图腾生成</title>
-	<meta name="keywords" content="mcneko,3d图腾,我的世界,Minecraft,3D材质,MC,MC图腾,我的世界图腾,我的世界图腾材质包,自定义图腾,自定义不死图腾,不死图腾贴图,3D不死图腾,自定义3D图腾,3d totem,一键图腾,图腾材质包,1.20图腾材质,图腾材质包下载" />
-<meta name="description" content="这里是3d图腾生成工具网站，您可以在此处将您的皮肤上传至网站" />
 </head>
 
 <body>
     <div class="body">
         <div id="drop-file-here" style="display: none;">
             <a
-                style="font-family: zcool-kuaile; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
+                style="font-family: PriorityFont; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
         </div>
-        <header class="websiteHeader" style="font-family: zcool-kuaile;" ; font-size: 19px>《我的世界》 3D 图腾创建</header>
+        <header class="websiteHeader" style="font-family: PriorityFont;" ; font-size: 19px>《我的世界》 3D 图腾创建</header>
         <div class="scrollAble">
             <div class="verticle-stack dropdown">
                 <button type="button" class="dropdown-toggle">
-                    <span><a style="font-family: zcool-kuaile;">网站信息</a></span>
+                    <span><a style="font-family: PriorityFont;">网站信息</a></span>
                     <div class="dropdown-arrow"></div>
                 </button>
 
                 <div class="dropdown-content">
                     <div style="position: relative; left: 5px;">
-                        <a style="font-family: zcool-kuaile; font-size: 20px;"><b>信息</b></a><br>
-                        <a style="font-family: zcool-kuaile;">开发者: Asaki Yuki</a><br>
-                        <a style="font-family: zcool-kuaile;">译者: <a href=https://azqaq.top style="font-family: zcool-kuaile;">Meowco</a> </a><br>
-			<a style="font-family: zcool-kuaile;">论坛: <a href=https://www.mcneko.com style="font-family: zcool-kuaile;">www.mcneko.com</a> </a><br>
-                        <a style="font-family: zcool-kuaile;">源代码: <a
+                        <a style="font-family: PriorityFont; font-size: 20px;"><b>信息</b></a><br>
+                        <a style="font-family: PriorityFont;">开发者: Asaki Yuki</a><br>
+                        <a style="font-family: PriorityFont;">译者: <a href=https://azqaq.top style="font-family: PriorityFont;">Meowco</a> </a><br>
+			<a style="font-family: PriorityFont;">论坛: <a href=https://www.mcneko.com style="font-family: PriorityFont;">www.mcneko.com</a> </a><br>
+                        <a style="font-family: PriorityFont;">源代码: <a
                                 href="https://github.com/azdyqwo/3d-totem-generator"
-                                style="font-family: zcool-kuaile;">Github</a>、<a
+                                style="font-family: PriorityFont;">Github</a>、<a
                                 href="https://github.com/asakiyuki/3d-totem-generator"
-                                style="font-family: zcool-kuaile;">Github（未翻译）</a></a> <br>
-                            <a style="font-family: zcool-kuaile; font-size: 20px"><b>这是什么网站？</b></a><br>
-                            <a style="font-family: zcool-kuaile;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
-                            <a style="font-family: zcool-kuaile; font-size: 20px"><b>怎么使用该工具？</b></a><br>
-                            <a style="font-family: zcool-kuaile;">非常易于使用，只需要上传皮肤并下载它！</a><br>
-                            <a style="font-family: zcool-kuaile; font-size: 20px"><b>现在已有多少访问量？</b></a><br>
+                                style="font-family: PriorityFont;">Github（未翻译）</a></a> <br>
+                            <a style="font-family: PriorityFont; font-size: 20px"><b>这是什么网站？</b></a><br>
+                            <a style="font-family: PriorityFont;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
+                            <a style="font-family: PriorityFont; font-size: 20px"><b>怎么使用该工具？</b></a><br>
+                            <a style="font-family: PriorityFont;">非常易于使用，只需要上传皮肤并下载它！</a><br>
+                            <a style="font-family: PriorityFont; font-size: 20px"><b>现在已有多少访问量？</b></a><br>
                             <img src="https://badges.toozhao.com/badges/01HSEBG59QHVH5A4JXHZ6TZYT0/green.svg"><br>
-                          <a style="font-family: zcool-kuaile; font-size: 20px"><b>为什么我无法上传或下载？</b></a><br>
-                            <a style="font-family: zcool-kuaile;">1、本站仅支持 <font color="red">64×64</font> 大小的皮肤展开图</a><br>
-                            <a style="font-family: zcool-kuaile;">2、请使用 <font color="red">Chromium</font> 内核的浏览器进行操作，例如 <font color="red">Google Chrome、Microsoft Edge、Kiwi Browser</font></a><br> 
-                            <a style="font-family: zcool-kuaile; font-size: 21px">其它功能请<a href="https://github.com/asakiyuki/3d-totem-generator" style="font-family: zcool-kuaile;">前往原作者的 GitHub 项目去反馈</a></a><br>
+                          <a style="font-family: PriorityFont; font-size: 20px"><b>为什么我无法上传或下载？</b></a><br>
+                            <a style="font-family: PriorityFont;">1、本站仅支持 <font color="red">64×64</font> 大小的皮肤展开图</a><br>
+                            <a style="font-family: PriorityFont;">2、请使用 <font color="red">Chromium</font> 内核的浏览器进行操作，例如 <font color="red">Google Chrome、Microsoft Edge、Kiwi Browser</font></a><br> 
+                            <a style="font-family: PriorityFont; font-size: 21px">其它功能请<a href="https://github.com/asakiyuki/3d-totem-generator" style="font-family: PriorityFont;">前往原作者的 GitHub 项目去反馈</a></a><br>
+                            <a style="font-family: PriorityFont; font-size: 20px"><b>提示</b></a><br>
+                            <a style="font-family: PriorityFont;">在选择粗手臂和细手臂时，白色为选中，黑色为未选中</a><br>
                     </div>
                 </div>
             </div>
+            
+            
 
             <div class="verticle-stack skinList importElement">
                 <input id="importImage" type="file" title="">
                 <div class="importImageText">
-                    <a style="font-family: zcool-kuaile;">单击此处选择文件或拖放到本网站上导入皮肤</a>
+                    <a style="font-family: PriorityFont;">单击此处选择文件或拖放到本网站上导入皮肤</a>
                 </div>
             </div>
 
             <div id="skinDropdown" class="verticle-stack skinList">
                 <div class="skin-items" style="text-align: center;">
-                    <a id="skinCounter" style="font-family: zcool-kuaile;">没有皮肤被上传！</a>
+                    <a id="skinCounter" style="font-family: PriorityFont;">没有皮肤被上传！</a>
                 </div>
                 <div id="skin-items-container" style="position: static; width: 100%; overflow: hidden;">
                 </div>
@@ -114,15 +95,15 @@
             </div>
 
             <div class="verticle-stack skinList downloadPackage">
-                <button id="platform"><span id="flatformText"><a style="font-family: zcool-kuaile;">基岩版</a></span></button>
+                <button id="platform"><span id="flatformText"><a style="font-family: PriorityFont;">基岩版</a></span></button>
                 <input type="text" placeholder=" 包名..." id="packName"></a>
-                <button id="download"><span><a style="font-family: zcool-kuaile;">下载</a></span></button>
+                <button id="download"><span><a style="font-family: PriorityFont;">下载</a></span></button>
             </div>
 
     <div id="skinEditorDialog">
         <div class="editorContent">
             <div class="editorLabel">
-                <span id="title"><a style="font-family: zcool-kuaile;">皮肤编辑器: ${SkinName}</a></span>
+                <span id="title"><a style="font-family: PriorityFont;">皮肤编辑器: ${SkinName}</a></span>
             </div>
 
             <div class="imageEditorScreen">
@@ -137,7 +118,7 @@
             </div>
 
             <div class="buttonStack">
-                <button id="close"><a style="font-family: zcool-kuaile;">保存并关闭</a></button>
+                <button id="close"><a style="font-family: PriorityFont;">保存并关闭</a></button>
             </div>
         </div>
     </div>
