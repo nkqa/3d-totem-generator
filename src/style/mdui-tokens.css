@@ -1,0 +1,90 @@
+/* ============================================================
+   令牌别名（统一取色出口）
+   设计令牌：颜色 / 圆角 / 阴影 / 字体 / 间距一律在此定义，
+   供 layout / components / skin-list / editor 等分片共用
+   其它分片只允许消费这些变量，不允许再出现裸 rgb(var(--mdui-color-*))。
+   ============================================================ */
+:root {
+    /* 颜色：MDUI 的三元组写法 rgb(var(--mdui-color-*)) */
+    --tt-surface: rgb(var(--mdui-color-surface));
+    --tt-surface-low: rgb(var(--mdui-color-surface-container-low));
+    --tt-surface-high: rgb(var(--mdui-color-surface-container-high));
+    --tt-surface-highest: rgb(var(--mdui-color-surface-container-highest));
+    --tt-on-surface: rgb(var(--mdui-color-on-surface));
+    --tt-on-surface-var: rgb(var(--mdui-color-on-surface-variant));
+    --tt-outline: rgb(var(--mdui-color-outline));
+    --tt-outline-var: rgb(var(--mdui-color-outline-variant));
+    --tt-primary: rgb(var(--mdui-color-primary));
+    --tt-on-primary: rgb(var(--mdui-color-on-primary));
+    --tt-primary-container: rgb(var(--mdui-color-primary-container));
+    --tt-on-primary-container: rgb(var(--mdui-color-on-primary-container));
+    --tt-secondary-container: rgb(var(--mdui-color-secondary-container));
+    --tt-on-secondary-container: rgb(var(--mdui-color-on-secondary-container));
+    --tt-error: rgb(var(--mdui-color-error));
+    --tt-on-error: rgb(var(--mdui-color-on-error));
+    --tt-error-container: rgb(var(--mdui-color-error-container));
+    --tt-on-error-container: rgb(var(--mdui-color-on-error-container));
+
+    /* 圆角 / 阴影 */
+    --tt-radius-sm: var(--mdui-shape-corner-small);
+    --tt-radius-md: var(--mdui-shape-corner-medium);
+    --tt-radius-lg: var(--mdui-shape-corner-large);
+    --tt-radius-xl: var(--mdui-shape-corner-extra-large);
+    --tt-radius-full: var(--mdui-shape-corner-full);
+    --tt-shadow-1: var(--mdui-elevation-level1);
+    --tt-shadow-2: var(--mdui-elevation-level2);
+
+    /* 正文字体走 --priority-font（lang-font.css 按语言切换像素字体）；
+       MinecraftTen 仅用于标题/等宽展示位，保证中文 fallback 完整 */
+    --tt-font: var(--priority-font, "MinecraftTen", "Minecraft", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif);
+    --tt-mono: "MinecraftTen", "Minecraft", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+    /* 统一间距基准：所有横向/纵向间距都由这 4 个变量派生，
+       避免 page padding / 卡片内边距 / 卡片间距各写各的导致视觉错位。
+       取值整体放宽一档，避免宽屏下内容挤成一团。 */
+    --tt-gutter: clamp(16px, 3.2vw, 40px);
+    --tt-stack-gap: 26px;
+    /* 卡片内边距不小于页面边距：卡片内容才不会贴着卡片边缘，
+       视觉上卡片比视口边缘更"内缩"，形成层次感 */
+    --tt-card-pad-x: clamp(22px, 2.6vw, 40px);
+    --tt-card-pad-y: 28px;
+}
+
+/* ============================================================
+   主题色覆盖：紫色 → 橙色
+   mdui.css 在 .mdui-theme-dark 上定义 -dark 系列变量，
+   再用 --mdui-color-primary: var(--mdui-color-primary-dark) 做映射。
+   这里用 html.mdui-theme-dark（特异性 0,1,1）压过 .mdui-theme-dark（0,1,0），
+   不受加载顺序影响；本文件后于 mdui.css 加载，双保险。
+   只改主色/次色/第三色及其容器、反色，表面与中性色保持原样。
+   ============================================================ */
+html.mdui-theme-dark {
+    --mdui-color-primary-dark: 255, 176, 92;
+    --mdui-color-on-primary-dark: 71, 38, 0;
+    --mdui-color-primary-container-dark: 120, 62, 12;
+    --mdui-color-on-primary-container-dark: 255, 222, 194;
+    --mdui-color-inverse-primary-dark: 168, 92, 20;
+    --mdui-color-secondary-dark: 231, 200, 174;
+    --mdui-color-on-secondary-dark: 68, 44, 22;
+    --mdui-color-secondary-container-dark: 96, 62, 38;
+    --mdui-color-on-secondary-container-dark: 255, 226, 202;
+    --mdui-color-tertiary-dark: 232, 196, 148;
+    --mdui-color-on-tertiary-dark: 66, 44, 10;
+    --mdui-color-tertiary-container-dark: 92, 66, 22;
+    --mdui-color-on-tertiary-container-dark: 255, 224, 170;
+    --mdui-color-surface-tint-color-dark: 255, 176, 92;
+}
+
+/* lang-font.css 的 @font-face 未声明 font-display（默认 auto）：
+   远程像素字体（fusion-pixel / Unifont 等）有约 3s 的 block period，
+   期间所有文字不可见，页面表现为"卡死"。
+   这里按 family 名补 font-display: swap——立即用后备字体渲染，
+   像素字体到位后无感替换。同一 family 的 @font-face 规则会合并，
+   故这里只声明 font-display，src 仍由 lang-font.css 提供。 */
+@font-face { font-family: 'FusionPixelJA';     font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/fusion-pixel-12px-proportional-ja.ttf.woff2) format('woff2'); }
+@font-face { font-family: 'FusionPixelKO';     font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/fusion-pixel-12px-proportional-ko.otf.woff2) format('woff2'); }
+@font-face { font-family: 'FusionPixelZHHans'; font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/fusion-pixel-12px-proportional-zh_hans.otf.woff2) format('woff2'); }
+@font-face { font-family: 'FusionPixelZHHant'; font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/fusion-pixel-12px-proportional-zh_hant.otf.woff2) format('woff2'); }
+@font-face { font-family: 'UnifontJP';         font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/Unifont-JP.woff2) format('woff2'); }
+@font-face { font-family: 'UnifontT';          font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/Unifont-T.woff2) format('woff2'); }
+@font-face { font-family: 'UnifontHans';       font-display: swap; src: url(https://cdn.jsdmirror.com/gh/nkqa/homepage@main/static/fonts/Unifont.woff2) format('woff2'); }

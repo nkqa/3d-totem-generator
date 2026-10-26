@@ -1,0 +1,155 @@
+/* ============================================================
+   通用组件：卡片 / 区块标题 / 提示条 / 行 / 按钮与输入微调
+   ============================================================ */
+/* mdui-card 的 shadow 里只有 <slot>，light DOM 子元素直接挂 host，
+   所以 padding 写在 host 上即可生效（不必写 ::part） */
+mdui-card.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: var(--tt-card-pad-y) var(--tt-card-pad-x);
+    border-radius: var(--tt-radius-lg);
+    background-color: var(--tt-surface-low);
+    box-shadow: var(--tt-shadow-1);
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.section-head mdui-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--tt-radius-md);
+    font-size: 26px;
+    color: var(--tt-on-primary-container);
+    background-color: var(--tt-primary-container);
+    box-shadow: inset 0 0 0 1px rgb(var(--mdui-color-primary) / 16%);
+}
+
+.section-head h2 {
+    margin: 0;
+    font-family: var(--tt-mono);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--tt-on-surface);
+}
+
+.hint {
+    margin: 0;
+    padding: 13px 20px;
+    border-left: 3px solid var(--tt-primary);
+    border-radius: 0 var(--tt-radius-sm) var(--tt-radius-sm) 0;
+    background-color: var(--tt-surface-high);
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--tt-on-surface-var);
+}
+
+.hint b {
+    color: var(--tt-primary);
+    font-weight: 700;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* .grow 只做横向增长。
+   注意：不可写 flex-basis——窄屏 .row 变为 column 后 flex-basis 会作用到 height，
+   导致 mdui-text-field 被撑到 220px 高（实测复现）。 */
+.row .grow {
+    flex: 1 1 auto;
+    min-width: 180px;
+}
+
+/* 平台信息行：图标 + "平台:" + 版本，始终是一行横排展示。
+   注意：不要让它继承 .row 在 640px 断点的 flex-direction:column ——
+   那一断点是为输入框/按钮设计的，平台信息被竖着堆成三行会很难看（实测复现）。
+   这里显式钉死 flex-direction:row + nowrap，并让宽度按内容收缩。 */
+.platform-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-self: flex-start;
+    gap: 9px;
+    max-width: 100%;
+    padding: 13px 20px;
+    border: 1px dashed var(--tt-outline-var);
+    border-radius: var(--tt-radius-md);
+    font-size: 13.5px;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: var(--tt-on-surface-var);
+}
+
+.platform-row mdui-icon {
+    font-size: 20px;
+    color: var(--tt-primary);
+}
+
+/* 两个 span 钉死不收缩，保证"平台: 基岩版"作为整体跟图标保持一行 */
+.platform-row #platform,
+.platform-row #flatformText {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.platform-row a {
+    color: var(--tt-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* ---------- 按钮 / 输入微调 ---------- */
+mdui-button {
+    letter-spacing: 0.4px;
+}
+
+/* 输入框高度锁定：窄屏 column 布局下若上层误传 flex-basis，
+   会表现为 220px 高的方框。这里显式钉死高度与行内增长，杜绝该回归。 */
+.row mdui-text-field,
+.row input {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 180px;
+    height: 56px;
+    flex-grow: 1;
+}
+
+/* 版本下拉栏：固定宽度，不参与 grow，避免抢走输入框的空间 */
+.row mdui-select {
+    flex: 0 0 auto;
+    width: 120px;
+    min-width: 120px;
+    height: 56px;
+}
+
+/* 皮肤计数 chip：撑满整行，与其它组件（按钮/输入框）左右边缘对齐。
+   mdui-chip 默认 inline-block 且 min-width 由内容决定，这里显式钉死。
+   高度钉到 56px，与 mdui-button / mdui-text-field 的行高一致。 */
+.row mdui-chip#skinCounter {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: var(--tt-radius-sm);
+    background-color: var(--tt-surface-high);
+    box-shadow: inset 0 0 0 1px var(--tt-outline-var);
+    font-family: var(--tt-mono);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}

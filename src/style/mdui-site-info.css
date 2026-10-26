@@ -1,0 +1,52 @@
+/* ============================================================
+   右栏「网站信息」折叠区内容排版
+   （内容与原版 index.html 的网站信息下拉保持一致）
+   ============================================================ */
+.info-body {
+    padding: 6px 2px 2px;
+}
+
+.info-title {
+    margin: 18px 0 8px;
+    font-family: var(--tt-mono);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--tt-on-surface);
+}
+
+.info-title:first-child {
+    margin-top: 6px;
+}
+
+/* 行间距统一由 .info-line 控制。
+   注意：不要再写 .info-body p 的 margin——元素选择器+类选择器（0,1,1）
+   特异性高于 .info-line（0,1,0），会覆盖这里的值导致行距失控。 */
+.info-line {
+    margin: 0 0 5px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--tt-on-surface-var);
+}
+
+.info-line a {
+    color: var(--tt-primary);
+    text-decoration: none;
+}
+
+.info-line a:hover {
+    text-decoration: underline;
+}
+
+/* 原版用 <font color="red"> 强调的关键词，这里用主题 error 色高亮 */
+.info-line .hl {
+    color: var(--tt-error);
+    font-weight: 700;
+}
+
+/* 段落间距：只作用于 info-body 内未加 .info-line 的 <p>（当前 HTML 无此情况）。
+   不能写 margin——会因特异性覆盖 .info-line（见上文注释）。 */
+.info-body p b {
+    color: var(--tt-primary);
+    font-weight: 700;
+}

@@ -1,0 +1,42 @@
+/* ============================================================
+   拖放导入遮罩（skin-import.js 直接切 display）
+   ============================================================ */
+#drop-file-here {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    background-color: rgb(var(--mdui-color-surface) / 82%);
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+}
+
+#drop-file-here .drop-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-1.5deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 52px 68px;
+    border: 3px dashed var(--tt-primary);
+    border-radius: var(--tt-radius-xl);
+    background-color: var(--tt-surface-high);
+    color: var(--tt-on-surface);
+    box-shadow: var(--tt-shadow-2);
+}
+
+#drop-file-here .drop-inner mdui-icon {
+    font-size: 68px;
+    color: var(--tt-primary);
+}
+
+#drop-file-here .drop-inner p {
+    margin: 0;
+    font-family: var(--tt-mono);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,95 @@
+/* ============================================================
+   皮肤编辑器：mdui-dialog + 画布 + 像素绘制层
+   （skin-editor.js 用 mdui-dialog 原生 open 属性控制 #skinEditorDialog）
+   ============================================================ */
+mdui-dialog.editor-dialog::part(overlay) {
+    background-color: rgb(var(--mdui-color-surface) / 72%);
+    backdrop-filter: blur(8px);
+}
+
+mdui-dialog.editor-dialog::part(panel) {
+    border-radius: var(--tt-radius-lg);
+    background-color: var(--tt-surface);
+    box-shadow: var(--tt-shadow-2);
+    overflow: hidden;
+}
+
+mdui-dialog.editor-dialog::part(body) {
+    padding: 0;
+}
+
+/* 编辑器顶栏（mdui-top-app-bar.editor-bar） */
+.editor-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: var(--tt-primary-container);
+    color: var(--tt-on-primary-container);
+    box-shadow: var(--tt-shadow-1);
+}
+
+.editor-bar mdui-top-app-bar-title {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--tt-mono);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 画布区（skin-editor.js：#editor，右键拖拽平移 / Ctrl+滚轮缩放） */
+.editor-area {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    cursor: default;
+    /* 像素网格底纹 */
+    background-color: var(--tt-surface-highest);
+    background-image:
+        linear-gradient(45deg, rgb(var(--mdui-color-on-surface) / 5%) 25%, transparent 25%, transparent 75%, rgb(var(--mdui-color-on-surface) / 5%) 75%),
+        linear-gradient(45deg, rgb(var(--mdui-color-on-surface) / 5%) 25%, transparent 25%, transparent 75%, rgb(var(--mdui-color-on-surface) / 5%) 75%);
+    background-size: 28px 28px;
+    background-position: 0 0, 14px 14px;
+}
+
+/* 皮肤渲染层（skin-editor.js：#rendererElement，运行时会写 height% 与 transform 位移） */
+.renderer-element {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    image-rendering: pixelated;
+    pointer-events: auto;
+}
+
+.renderer-element img#editorImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    box-shadow: var(--tt-shadow-2);
+}
+
+/* 像素绘制命中层（skin-editor.js：#imagePixelSelected） */
+.pixel-selected {
+    position: absolute;
+    inset: 0;
+}
+
+/* 悬停预览格（skin-editor.js：#pixelHover，尺寸运行时写入） */
+.pixel-hover {
+    position: absolute;
+    display: none;
+    border: 1px solid rgb(255 255 255 / 88%);
+    background-color: rgb(255 255 255 / 32%);
+    pointer-events: none;
+}
+
+/* 已点亮的发光像素（skin-editor.js 动态创建 name="lightPixel" 的 div） */
+.pixel-selected div[name="lightPixel"] {
+    outline: 1px solid rgb(0 255 255 / 22%);
+}

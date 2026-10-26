@@ -1,30 +1,29 @@
-<html lang="zh">
-
+<!DOCTYPE html>
+<html lang="zh-CN" class="mdui-theme-dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./libarries/jszip.min.js"></script>
-    <script src="./libarries/HTMNode.min.js"></script>
-    <script src="./libarries/JSZipByObject.min.js"></script>
-    <script src="./libarries/FetchObject.min.js"></script>
-    <script src="./libarries/share.js"></script>
-    <!-- font -->
-    <link rel="stylesheet" href="/font.css" type="text/css" media="all">
-    
-    <title>我的世界 3D 图腾生成</title>
-	<meta name="keywords" content="mcneko,3d图腾,我的世界,Minecraft,3D材质,MC,MC图腾,我的世界图腾,我的世界图腾材质包,自定义图腾,自定义不死图腾,不死图腾贴图,3D不死图腾,自定义3D图腾,3d totem,一键图腾,图腾材质包,1.20图腾材质,图腾材质包下载" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 网站信息对齐原版 index.html -->
+<title>我的世界 3D 图腾生成</title>
+<meta name="keywords" content="mcneko,3d图腾,我的世界,Minecraft,3D材质,MC,MC图腾,我的世界图腾,我的世界图腾材质包,自定义图腾,自定义不死图腾,不死图腾贴图,3D不死图腾,自定义3D图腾,3d totem,一键图腾,图腾材质包,1.20图腾材质,图腾材质包下载" />
 <meta name="description" content="这里是3d图腾生成工具网站，您可以在此处将您的皮肤上传至网站，支持多个皮肤同时上传！" />
-
- <!--instant.page-->
- <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
- <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-4XF5XT1WGB"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4XF5XT1WGB');
+<!-- MDUI 2 组件库 -->
+<link rel="stylesheet" href="./libarries/mdui.css">
+<script src="./libarries/mdui.global.js"></script>
+<!-- Material Icons Round 图标字体（mdui-icon name="xxx--rounded" 使用；字体文件走在线 Google Fonts CDN） -->
+<link rel="stylesheet" href="./libarries/material-icons.css">
+<script>
+(function () {
+	if (!('serviceWorker' in navigator)) return;
+	var host = location.hostname;
+	if (location.protocol !== 'https:' && host !== 'localhost' && host !== '127.0.0.1') return;
+	if (window.top !== window.self) return;
+	var base = (typeof SITEURL === 'string' && SITEURL) ? SITEURL : '/';
+	if (base.charAt(base.length - 1) !== '/') base += '/';
+	window.addEventListener('load', function () {
+		navigator.serviceWorker.register(base + 'static/js/sw.js', { scope: base }).catch(function () {});
+	});
+})();
 </script>
 <!-- ... -->
 <script type="text/javascript">
@@ -34,101 +33,183 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "o11hourj5x");
 </script>
+<!-- 全新 MDUI 主题样式（按职责拆分为多个分片，tokens 必须最先加载） -->
+<link rel="stylesheet" href="./src/style/mdui-tokens.css">
+<link rel="stylesheet" href="./src/style/mdui-layout.css">
+<link rel="stylesheet" href="./src/style/mdui-components.css">
+<link rel="stylesheet" href="./src/style/mdui-skin-list.css">
+<link rel="stylesheet" href="./src/style/mdui-editor.css">
+<link rel="stylesheet" href="./src/style/mdui-drop-overlay.css">
+<link rel="stylesheet" href="./src/style/mdui-site-info.css">
+<link rel="stylesheet" href="./src/style/mdui-responsive.css">
+<!-- 语言像素字体链（lang-font.js 按语言给 html 加 lang-* 类，--priority-font 随之切换） -->
+<link rel="stylesheet" href="https://cdn.jsdmirror.com/gh/nkqa/static@main/css/lang-font.css">
+<script src="https://cdn.jsdmirror.com/gh/nkqa/static@main/js/lang-font.js"></script>
 </head>
-
 <body>
-    <div class="body">
-        <div id="drop-file-here" style="display: none;">
-            <a
-                style="font-family: PriorityFont; font-size: 25px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);">上传皮肤</a>
-        </div>
-        <header class="websiteHeader" style="font-family: PriorityFont;" ; font-size: 19px>《我的世界》 3D 图腾创建</header>
-        <div class="scrollAble">
-            <div class="verticle-stack dropdown">
-                <button type="button" class="dropdown-toggle">
-                    <span><a style="font-family: PriorityFont;">网站信息</a></span>
-                    <div class="dropdown-arrow"></div>
-                </button>
 
-                <div class="dropdown-content">
-                    <div style="position: relative; left: 5px;">
-                        <a style="font-family: PriorityFont; font-size: 20px;"><b>信息</b></a><br>
-                        <a style="font-family: PriorityFont;">开发者: Asaki Yuki</a><br>
-                        <a style="font-family: PriorityFont;">译者: <a href=https://meowco.cn style="font-family: PriorityFont;">MeowcoQAQ</a> </a><br>
-			<a style="font-family: PriorityFont;">社区: <a href=https://www.mcneko.com style="font-family: PriorityFont;">www.mcneko.com</a> </a><br>
-                        <a style="font-family: PriorityFont;">源代码: <a
-                                href="https://github.com/nkqa/3d-totem-generator"
-                                style="font-family: PriorityFont;">Github</a>、<a
-                                href="https://github.com/asakiyuki/3d-totem-generator"
-                                style="font-family: PriorityFont;">Github（未翻译）</a></a> <br>
-                            <a style="font-family: PriorityFont; font-size: 20px"><b>这是什么网站？</b></a><br>
-                            <a style="font-family: PriorityFont;">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</a><br>
-                            <a style="font-family: PriorityFont; font-size: 20px"><b>怎么使用该工具？</b></a><br>
-                            <a style="font-family: PriorityFont;">非常易于使用，只需要上传皮肤并下载它！</a><br>
-                            <a style="font-family: PriorityFont; font-size: 20px"><b>现在已有多少访问量？</b></a><br>
-                            <img src="https://badges.toozhao.com/badges/01HSEBG59QHVH5A4JXHZ6TZYT0/green.svg"><br>
-                          <a style="font-family: PriorityFont; font-size: 20px"><b>为什么我无法上传或下载？</b></a><br>
-                            <a style="font-family: PriorityFont;">1、本站仅支持 <font color="red">64×64</font> 大小的皮肤展开图</a><br>
-                            <a style="font-family: PriorityFont;">2、请使用 <font color="red">Chromium</font> 内核的浏览器进行操作，例如 <font color="red">Google Chrome、Microsoft Edge、Kiwi Browser</font></a><br> 
-                            <a style="font-family: PriorityFont; font-size: 21px">其它功能请<a href="https://github.com/asakiyuki/3d-totem-generator" style="font-family: PriorityFont;">前往原作者的 GitHub 项目去反馈</a></a><br>
-                            <a style="font-family: PriorityFont; font-size: 20px"><b>提示</b></a><br>
-                            <a style="font-family: PriorityFont;">在选择粗手臂和细手臂时，白色为选中，黑色为未选中</a><br>
-                    </div>
-                </div>
-            </div>
-            
-            
+<!-- 顶部应用栏：只保留标题（sticky 贴顶，不随页面滚动消失） -->
+<mdui-top-app-bar scroll-behavior="elevate" class="top-bar">
+  <mdui-top-app-bar-title>3D 图腾生成器</mdui-top-app-bar-title>
+</mdui-top-app-bar>
 
-            <div class="verticle-stack skinList importElement">
-                <input id="importImage" type="file" title="">
-                <div class="importImageText">
-                    <a style="font-family: PriorityFont;">单击此处选择文件或拖放到本网站上导入皮肤</a>
-                </div>
-            </div>
-
-            <div id="skinDropdown" class="verticle-stack skinList">
-                <div class="skin-items" style="text-align: center;">
-                    <a id="skinCounter" style="font-family: PriorityFont;">没有皮肤被上传！</a>
-                </div>
-                <div id="skin-items-container" style="position: static; width: 100%; overflow: hidden;">
-                </div>
-                <div style="height: 5px;"></div>
-            </div>
-
-            <div class="verticle-stack skinList downloadPackage">
-                <button id="platform"><span id="flatformText"><a style="font-family: PriorityFont;">基岩版</a></span></button>
-                <input type="text" placeholder=" 包名..." id="packName"></a>
-                <button id="download"><span><a style="font-family: PriorityFont;">下载</a></span></button>
-            </div>
-
-    <div id="skinEditorDialog">
-        <div class="editorContent">
-            <div class="editorLabel">
-                <span id="title"><a style="font-family: PriorityFont;">皮肤编辑器: ${SkinName}</a></span>
-            </div>
-
-            <div class="imageEditorScreen">
-                <div id="editor" class="imageEditor">
-                    <div id="rendererElement" class="renderer">
-                        <img title=".-." id="editorImage" draggable="false">
-                        <div id="imagePixelSelected">
-                            <div id="pixelHover"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="buttonStack">
-                <button id="close"><a style="font-family: PriorityFont;">保存并关闭</a></button>
-            </div>
-        </div>
+<!-- 页面主体：intro 标题区 + 左右两栏工作区（导入/编辑在左，导出在右） -->
+<main class="page">
+  <div class="intro">
+    <div>
+      <div class="eyebrow">《我的世界》 3D 图腾创建</div>
+      <h1>3D 图腾生成</h1>
+      <p>这个网站用于生成您的皮肤在《我的世界》中的 3D 图腾，非常易于使用，只需要上传皮肤并下载它！</p>
     </div>
-    <!-- Import Script -->
-    <script src="./src/script/main.js"></script>
-    <script src="./src/script/background.js"></script>
-</body>
+  </div>
 
-<footer>
+  <div class="workspace">
+    <!-- 左栏：导入皮肤 / 获取在线皮肤（在线获取按需求放在皮肤列表下方） -->
+    <aside class="main-column">
+      <!-- 导入皮肤卡片 -->
+      <mdui-card class="section">
+        <div class="section-head">
+          <mdui-icon name="add_photo_alternate--rounded"></mdui-icon>
+          <h2>导入皮肤</h2>
+        </div>
+        <p class="hint">支持 <b>64×64 / 128×128 PNG</b> 皮肤展开图，或 <b>.mcpack / .zip</b> 皮肤包（拖放到页面任意位置也可以）。</p>
+        <div class="row">
+          <mdui-button variant="filled" full-width id="importImage">
+            <mdui-icon name="upload_file--rounded" slot="icon"></mdui-icon>选择皮肤
+          </mdui-button>
+        </div>
+        <div class="row">
+          <mdui-chip id="skinCounter">没有皮肤被上传！</mdui-chip>
+        </div>
+        <div id="skin-items-container"></div>
+        <!-- 皮肤列表空状态：有皮肤时由 skin-list.js 隐藏 -->
+        <div class="skin-empty" id="skinEmpty">
+          <mdui-icon name="photo_size_select_actual--rounded"></mdui-icon>
+          <p>还没有皮肤</p>
+          <span>导入 PNG / .mcpack / .zip 后会出现在这里</span>
+        </div>
+      </mdui-card>
+
+      <!-- 获取在线皮肤卡片（位于皮肤列表下方） -->
+      <mdui-card class="section" id="get-skin-section">
+        <div class="section-head">
+          <mdui-icon name="travel_explore--rounded"></mdui-icon>
+          <h2>获取在线皮肤</h2>
+        </div>
+        <p class="hint">输入玩家名即可拉取正版 / 基岩皮肤，自动加入上方列表。</p>
+        <div class="row">
+          <mdui-select variant="outlined" id="getSkinEdition" label="版本" value="java">
+            <mdui-menu-item value="java">Java 版</mdui-menu-item>
+            <mdui-menu-item value="bedrock">基岩版</mdui-menu-item>
+          </mdui-select>
+          <mdui-text-field class="grow" id="getSkinName" variant="outlined" label="玩家名" placeholder=" 用户名..."></mdui-text-field>
+          <mdui-button variant="filled" id="getSkinButton"><a>获取皮肤</a></mdui-button>
+        </div>
+      </mdui-card>
+    </aside>
+
+    <!-- 右栏：导出 + 网站信息（粘性定位，随左栏滚动保持可见） -->
+    <aside class="side-column">
+      <!-- 下载卡片 -->
+      <mdui-card class="section">
+        <div class="section-head">
+          <mdui-icon name="inventory_2--rounded"></mdui-icon>
+          <h2>导出图腾包</h2>
+        </div>
+        <div class="row">
+          <mdui-text-field class="grow" id="packName" variant="outlined" label="包名" placeholder="Pack name..."></mdui-text-field>
+        </div>
+        <div class="row platform-row">
+          <mdui-icon name="devices--rounded"></mdui-icon>
+          <span id="platform">平台: </span><span id="flatformText"><a>基岩版</a></span>
+        </div>
+        <mdui-button variant="tonal" full-width id="downloadBottom">
+          <mdui-icon name="download--rounded" slot="icon"></mdui-icon>下载并导出
+        </mdui-button>
+      </mdui-card>
+
+      <!-- 网站信息（折叠） -->
+      <mdui-card class="section">
+        <mdui-collapse accordion>
+          <mdui-collapse-item>
+            <mdui-list-item slot="header" icon="info--rounded" end-icon="expand_more--rounded" headline="网站信息"></mdui-list-item>
+            <div class="info-body">
+              <h3 class="info-title">信息</h3>
+              <p class="info-line">开发者: Asaki Yuki</p>
+              <p class="info-line">译者: <a href="https://meowco.cn" target="_blank" rel="noopener">MeowcoQAQ</a></p>
+              <p class="info-line">社区: <a href="https://www.mcneko.com" target="_blank" rel="noopener">www.mcneko.com</a></p>
+              <p class="info-line">源代码: <a href="https://github.com/nkqa/3d-totem-generator" target="_blank" rel="noopener">Github</a>、<a href="https://github.com/asakiyuki/3d-totem-generator" target="_blank" rel="noopener">Github（未翻译）</a></p>
+
+              <h3 class="info-title">这是什么网站？</h3>
+              <p class="info-line">这个网站用于生成您的皮肤在《我的世界》中的3D图腾</p>
+
+              <h3 class="info-title">怎么使用该工具？</h3>
+              <p class="info-line">非常易于使用，只需要上传皮肤并下载它！</p>
+
+              <h3 class="info-title">怎么获取玩家皮肤？</h3>
+              <p class="info-line">在“获取玩家皮肤”处选择 <span class="hl">Java 版</span> 或 <span class="hl">基岩版</span>，输入用户名后点击“获取皮肤”即可</p>
+              <p class="info-line">1、<span class="hl">Java 版</span>填写的是玩家的 Java 版正版 ID</p>
+              <p class="info-line">2、<span class="hl">基岩版</span>填写的是玩家的 Xbox 用户名（Gamertag），且该玩家需曾在基岩互通服务器出现，否则可能查询不到</p>
+              <p class="info-line">3、获取到的皮肤仅支持 <span class="hl">64×64</span> 与 <span class="hl">128×128</span> 两种尺寸</p>
+
+              <h3 class="info-title">为什么我无法上传或下载？</h3>
+              <p class="info-line">1、本站仅支持 <span class="hl">64×64</span> 与 <span class="hl">128×128</span> 大小的皮肤展开图</p>
+              <p class="info-line">2、请使用 <span class="hl">Chromium</span> 内核的浏览器进行操作，例如 <span class="hl">Google Chrome、Microsoft Edge、Kiwi Browser</span></p>
+              <p class="info-line">其它功能请<a href="https://github.com/asakiyuki/3d-totem-generator" target="_blank" rel="noopener">前往原作者的 GitHub 项目去反馈</a></p>
+
+              <h3 class="info-title">提示</h3>
+              <p class="info-line">在选择粗手臂和细手臂时，白色为选中，黑色为未选中</p>
+            </div>
+          </mdui-collapse-item>
+        </mdui-collapse>
+      </mdui-card>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>本站与 Mojang、微软公司无任何从属关系</span><span class="footer-sep">|</span><span>皮肤数据由第三方服务提供</span>
 </footer>
 
+<!-- 皮肤编辑器对话框（skin-editor.js 直接用 mdui-dialog 原生 open 属性控制） -->
+<mdui-dialog id="skinEditorDialog" fullscreen class="editor-dialog">
+  <mdui-top-app-bar slot="header" class="editor-bar">
+    <mdui-button icon="close--rounded" id="close" variant="text"></mdui-button>
+    <mdui-top-app-bar-title id="title">皮肤编辑器</mdui-top-app-bar-title>
+    <mdui-button variant="text" id="editorFinish">完成</mdui-button>
+  </mdui-top-app-bar>
+  <div id="editor" class="editor-area">
+    <div id="rendererElement" class="renderer-element">
+      <img id="editorImage" alt="skin">
+      <div id="imagePixelSelected" class="pixel-selected"></div>
+      <div id="pixelHover" class="pixel-hover"></div>
+    </div>
+  </div>
+</mdui-dialog>
+
+<!-- 拖放提示遮罩 -->
+<div id="drop-file-here">
+  <div class="drop-inner">
+    <mdui-icon name="file_upload--rounded"></mdui-icon>
+    <p>松开导入皮肤文件</p>
+  </div>
+</div>
+
+<!-- 依赖库（HTMNode 等库用顶层 const/class 声明，仅在经典脚本作用域可见） -->
+<script src="./libarries/jszip.min.js"></script>
+<script src="./libarries/HTMNode.min.js"></script>
+<script src="./libarries/JSZipByObject.min.js"></script>
+<script src="./libarries/FetchObject.min.js"></script>
+<!-- MDUI 页面逻辑（按职责拆分，依赖顺序从上到下）
+     state → texture → list → import → online → editor → export → misc -->
+<script src="./src/script/skin-state.js"></script>
+<script src="./src/script/skin-texture.js"></script>
+<script src="./src/script/skin-list.js"></script>
+<script src="./src/script/skin-import.js"></script>
+<script src="./src/script/skin-online.js"></script>
+<script src="./src/script/skin-editor.js"></script>
+<script src="./src/script/skin-export.js"></script>
+<script src="./src/script/skin-misc.js"></script>
+
+</body>
 </html>

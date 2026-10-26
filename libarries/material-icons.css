@@ -1,0 +1,30 @@
+/* Material Icons Round 图标字体（mdui-icon name="xxx--rounded" 使用）
+   字体名必须保持 'Material Icons Round' —— mdui-icon 组件内部 span 硬编码该字体名；
+   字体文件全部走 Google Fonts 在线 CDN，不再依赖本地副本 */
+@font-face {
+    font-family: 'Material Icons Round';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/materialiconsround/v109/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmPq_HTTw.woff2') format('woff2');
+    font-display: block;
+}
+
+/* 字体图标基础样式：确保字形以 ligature 方式正常渲染 */
+.material-icons-round,
+[class*="--rounded"],
+[class*="--outlined"],
+[class*="--sharp"],
+mdui-icon {
+    font-family: 'Material Icons Round', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
