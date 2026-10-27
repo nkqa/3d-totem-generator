@@ -477,7 +477,13 @@ new CreateNode(GetElement.id('download')).setEvent({
                             }
                         }
                     };
-                    if (data.smallHand) {
+                    // 按手臂类型覆盖 attachable 的 geometry：
+                    // 细手臂(slim)用默认的 asa_slim_*（bedrockSrc/packs/attachables/totem.json 即指向 slim），
+                    // 粗手臂(small)才需要覆盖为 asa_small_*。
+                    // 注意：早期版本把这里写成 if (data.smallHand) 且覆盖成 asa_small_*，
+                    // 导致细手臂反而套了粗手臂模型、粗手臂用细手臂模型，两边都错配，
+                    // 细手臂在游戏内表现为图腾变回平面贴图（模型 identifier 不匹配）。
+                    if (!data.smallHand) {
                         const totem = JSON.parse(v.bedrockSrc.packs.attachables['totem.json']);
                         totem['minecraft:attachable'].description.geometry = {
                             totem_left: 'geometry.asa_small_totem_left',

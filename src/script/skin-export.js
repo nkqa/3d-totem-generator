@@ -22,21 +22,6 @@ const buildPack = () => {
             'texts': { 'en_US.lang': `item.totem.name=${data.name}` },
             'textures': { items: { 'totem.png': [data.texture] } }
         };
-        if (data.smallHand) {
-            subpacks[key]['attachables'] = {
-                'totem.json': JSON.stringify({
-                    'minecraft:attachable': {
-                        description: {
-                            identifier: 'asa:totem',
-                            geometry: {
-                                totem_left: 'geometry.asa_small_totem_left',
-                                totem_right: 'geometry.asa_small_totem_right'
-                            }
-                        }
-                    }
-                })
-            };
-        }
     });
 
     // multiFetch 的第二个参数是路径基准；本页位于仓库根目录，用 '.' 即可。
@@ -75,6 +60,22 @@ const buildPack = () => {
             }
         }
     }, '.').then((v) => {
+        // 按手臂类型覆盖 attachable 的 geometry：
+        // 细手臂(slim)用默认的 asa_slim_*（bedrockSrc/packs/attachables/totem.json 即指向 slim），
+        // 粗手臂(small)才需要覆盖为 asa_small_*。
+        keys.forEach((key) => {
+            const data = skinData[key];
+            if (!data.smallHand) {
+                const totem = JSON.parse(v.bedrockSrc.packs.attachables['totem.json']);
+                totem['minecraft:attachable'].description.geometry = {
+                    totem_left: 'geometry.asa_small_totem_left',
+                    totem_right: 'geometry.asa_small_totem_right'
+                };
+                subpacks[key]['attachables'] = {
+                    'totem.json': JSON.stringify(totem)
+                };
+            }
+        });
         return new ObjectToZip({
             ...v.bedrockSrc.packs,
             models: { entity: { ...v.bedrockSrc.model } },

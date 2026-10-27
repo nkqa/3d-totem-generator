@@ -35,9 +35,13 @@ const pasteImagePixel = (editImageArray, copyImageArray, editImgWidth, imgWidth,
  * 注意 2：pasteImagePixel 的第 4 参 imgWidth 是源图像素数据的行 stride，
  *         128×128 皮肤必须传 128；且源坐标表以 64 皮肤为基准，
  *         128 皮肤需整体乘 2，否则会读到错误的像素块。
+ * 注意 3：细/粗手臂使用完全相同的映射表。粗手臂模型 UV 覆盖的图腾格是细手臂的
+ *         子集，细手臂多出的格只有右/左手 #1 的 north 面残留，本来就不写入，
+ *         因此不需要按手臂类型做坐标偏移（早期版本对 x>=9 右移 1 像素，会在
+ *         贴图正中间撕出一道空缝，导致手持材质裂开）。
  * @param {Uint8Array|Array} imageData 皮肤展开图像素数据
  * @param {boolean} isSize64 是否为 64×64 皮肤
- * @param {boolean} smallHand true=细手臂（slim）
+ * @param {boolean} smallHand true=细手臂（slim）；保留参数以兼容调用方，不影响贴图映射
  * @returns {Promise<string>} 图腾贴图 base64（不含 data: 前缀）
  */
 const buildTotemTexture = (imageData, isSize64, smallHand) => {
@@ -88,7 +92,7 @@ const buildTotemTexture = (imageData, isSize64, smallHand) => {
                 [[8, 2], [4, 9]],
                 [[8, 2], [4, 11]]
             ])
-        ].map(([x, y]) => (smallHand ? [x + (x >= 9 ? 1 : 0), y] : [x, y]))
+        ]
     );
     return new Promise((resolve) => {
         ImageHandle.dataToImage(editArray, { width: editWidth, height: editWidth }, (base64) => resolve(base64));
